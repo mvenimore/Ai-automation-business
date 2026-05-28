@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Autonova — AI Automation for Modern Business</title>
+  <meta name="description" content="Autonova automates your business workflows with AI. Join the waitlist and be first to experience the future of work.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #07070e;
+      --bg-card: #0f0f1a;
+      --bg-card2: #0c0c16;
+      --border: rgba(255,255,255,0.07);
+      --accent: #7c3aed;
+      --accent2: #06b6d4;
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --text-dim: #475569;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2.5rem;
+      background: rgba(7,7,14,0.85);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      font-size: 1.35rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #a78bfa, #38bdf8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    .btn-nav {
+      background: linear-gradient(135deg, #7c3aed, #0891b2);
+      color: white;
+      border: none;
+      padding: 0.55rem 1.3rem;
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 0.875rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+
+    .btn-nav:hover { opacity: 0.85; transform: translateY(-1px); }
+
+    /* ── Hero ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 9rem 2rem 5rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 90% 60% at 50% -5%, rgba(124,58,237,0.28) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 35% at 85% 65%, rgba(6,182,212,0.12) 0%, transparent 55%);
+      pointer-events: none;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(124,58,237,0.12);
+      border: 1px solid rgba(124,58,237,0.28);
+      color: #a78bfa;
+      padding: 0.35rem 1rem;
+      border-radius: 100px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 1.75rem;
+      position: relative;
+    }
+
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      background: #a78bfa;
+      border-radius: 50%;
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.45; transform: scale(0.75); }
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 6.5vw, 5.2rem);
+      font-weight: 900;
+      line-height: 1.08;
+      letter-spacing: -0.035em;
+      margin-bottom: 1.5rem;
+      max-width: 860px;
+      position: relative;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #a78bfa 0%, #38bdf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 560px;
+      margin: 0 auto 2.75rem;
+      line-height: 1.75;
+      position: relative;
+    }
+
+    /* ── Waitlist form ── */
+    .waitlist-wrap {
+      position: relative;
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .waitlist-form {
+      display: flex;
+      gap: 0.6rem;
+      width: 100%;
+    }
+
+    .waitlist-form input[type="email"] {
+      flex: 1;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 0.9rem 1.2rem;
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.25s, background 0.25s;
+    }
+
+    .waitlist-form input[type="email"]:focus {
+      border-color: rgba(124,58,237,0.55);
+      background: rgba(255,255,255,0.07);
+    }
+
+    .waitlist-form input[type="email"]::placeholder { color: var(--text-dim); }
+
+    .waitlist-form button {
+      background: linear-gradient(135deg, #7c3aed, #0891b2);
+      color: white;
+      border: none;
+      padding: 0.9rem 1.6rem;
+      border-radius: 10px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+
+    .waitlist-form button:hover { opacity: 0.85; transform: translateY(-1px); }
+    .waitlist-form button:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+    .form-success {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      color: #4ade80;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 0.9rem;
+      background: rgba(74,222,128,0.08);
+      border: 1px solid rgba(74,222,128,0.2);
+      border-radius: 10px;
+    }
+
+    .social-proof {
+      margin-top: 1.75rem;
+      color: var(--text-dim);
+      font-size: 0.875rem;
+      position: relative;
+    }
+
+    .social-proof strong { color: var(--text-muted); }
+
+    /* ── Sections ── */
+    section { padding: 6rem 2rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+
+    .section-eyebrow {
+      text-align: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #7c3aed;
+      margin-bottom: 0.75rem;
+    }
+
+    h2 {
+      font-size: clamp(1.8rem, 4vw, 2.75rem);
+      font-weight: 800;
+      text-align: center;
+      letter-spacing: -0.025em;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+
+    .section-sub {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      max-width: 540px;
+      margin: 0 auto 4rem;
+      line-height: 1.7;
+    }
+
+    /* ── Features ── */
+    #features { background: linear-gradient(180deg, transparent 0%, rgba(124,58,237,0.04) 50%, transparent 100%); }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .feature-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem 2rem 2rem;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .feature-card:hover {
+      border-color: rgba(124,58,237,0.3);
+      transform: translateY(-3px);
+    }
+
+    .feature-icon {
+      width: 46px;
+      height: 46px;
+      background: linear-gradient(135deg, rgba(124,58,237,0.18), rgba(6,182,212,0.18));
+      border: 1px solid rgba(124,58,237,0.25);
+      border-radius: 11px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.35rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .feature-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.01em;
+    }
+
+    .feature-card p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.65;
+    }
+
+    /* ── How it works ── */
+    #how-it-works { background: var(--bg-card2); }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 0;
+      position: relative;
+    }
+
+    .step {
+      text-align: center;
+      padding: 2.5rem 2rem;
+      position: relative;
+    }
+
+    .step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      top: 3.6rem;
+      right: -1px;
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(180deg, rgba(124,58,237,0.4), transparent);
+    }
+
+    .step-num {
+      width: 52px;
+      height: 52px;
+      background: linear-gradient(135deg, #7c3aed, #0891b2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+      font-weight: 800;
+      margin: 0 auto 1.2rem;
+      position: relative;
+    }
+
+    .step-num::after {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(124,58,237,0.4), rgba(8,145,178,0.4));
+      z-index: -1;
+    }
+
+    .step h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .step p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.65; max-width: 240px; margin: 0 auto; }
+
+    /* ── Use cases ── */
+    .use-cases-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+      gap: 1rem;
+    }
+
+    .use-case {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-align: center;
+      font-weight: 600;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      transition: border-color 0.2s, color 0.2s, background 0.2s, transform 0.2s;
+      cursor: default;
+    }
+
+    .use-case:hover {
+      border-color: rgba(124,58,237,0.3);
+      color: var(--text);
+      background: rgba(124,58,237,0.06);
+      transform: translateY(-2px);
+    }
+
+    .use-case-icon { font-size: 1.75rem; margin-bottom: 0.6rem; display: block; }
+
+    /* ── Bottom CTA ── */
+    #cta {
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #cta::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 700px;
+      height: 350px;
+      background: radial-gradient(ellipse, rgba(124,58,237,0.18) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    #cta h2 { margin-bottom: 0.9rem; }
+    #cta .section-sub { margin-bottom: 2.5rem; }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 2rem;
+      text-align: center;
+      color: var(--text-dim);
+      font-size: 0.825rem;
+    }
+
+    .footer-logo {
+      display: block;
+      font-size: 1.2rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #a78bfa, #38bdf8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+
+    footer p + p { margin-top: 0.25rem; }
+
+    /* ── Responsive ── */
+    @media (max-width: 640px) {
+      nav { padding: 0.9rem 1.25rem; }
+      .nav-links { display: none; }
+      .waitlist-form { flex-direction: column; }
+      .waitlist-form button { width: 100%; }
+      .step:not(:last-child)::after { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="#" class="logo">Autonova</a>
+    <ul class="nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#how-it-works">How It Works</a></li>
+      <li><a href="#use-cases">Use Cases</a></li>
+    </ul>
+    <a href="#cta" class="btn-nav">Join Waitlist</a>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="hero">
+    <div class="badge"><span class="badge-dot"></span>Now accepting early access</div>
+    <h1>Your Business Runs.<br><span class="gradient-text">AI Does the Rest.</span></h1>
+    <p class="hero-sub">Autonova replaces repetitive workflows with intelligent AI agents. From lead follow-up to report generation — set it once, let it run forever.</p>
+
+    <div class="waitlist-wrap">
+      <form class="waitlist-form" id="wl-form-1">
+        <input type="email" name="email" placeholder="Enter your work email" required autocomplete="email">
+        <button type="submit">Get Early Access</button>
+      </form>
+      <div class="form-success" id="wl-success-1">✓ You're on the list! We'll be in touch.</div>
+    </div>
+
+    <p class="social-proof">Join <strong>500+</strong> founders and operators already waiting</p>
+  </section>
+
+  <!-- Features -->
+  <section id="features">
+    <div class="container">
+      <p class="section-eyebrow">Why Autonova</p>
+      <h2>Automation That Actually Thinks</h2>
+      <p class="section-sub">Stop duct-taping tools together. Autonova gives you AI-powered automation built for real business workflows.</p>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h3>Deploy in Minutes</h3>
+          <p>No engineers needed. Describe your workflow in plain English and Autonova builds, tests, and deploys it automatically.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔗</div>
+          <h3>Connects Everything</h3>
+          <p>Slack, HubSpot, Gmail, Notion, Airtable, and 200+ other tools. Your automations live where your team already works.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🧠</div>
+          <h3>Thinks, Doesn't Just Trigger</h3>
+          <p>Unlike simple automation tools, Autonova's AI understands context, makes decisions, and handles exceptions on its own.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <h3>Full Visibility</h3>
+          <p>See every action your automations take. Audit logs, performance metrics, and real-time monitoring built in.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔒</div>
+          <h3>Enterprise Security</h3>
+          <p>SOC 2 compliant. Your data stays yours. Role-based access, SSO, and end-to-end encryption from day one.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📈</div>
+          <h3>Scales With You</h3>
+          <p>From 10 to 10,000 runs per day. Autonova handles the load so you can focus on what actually matters.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section id="how-it-works">
+    <div class="container">
+      <p class="section-eyebrow">How It Works</p>
+      <h2>From Idea to Running in 3 Steps</h2>
+      <p class="section-sub">No code. No consultants. No months-long implementation. Just describe what you need and go live.</p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <h3>Describe Your Workflow</h3>
+          <p>Tell Autonova what you want to automate in plain language. "When a lead fills our form, enrich their data, score them, and notify the right rep."</p>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <h3>AI Builds &amp; Tests It</h3>
+          <p>Autonova designs the automation, connects your tools, and runs test scenarios — no code written, no manual setup.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <h3>Go Live, Stay Hands-Free</h3>
+          <p>Deploy with one click. Your automation runs 24/7, handles edge cases on its own, and improves over time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Use cases -->
+  <section id="use-cases">
+    <div class="container">
+      <p class="section-eyebrow">Use Cases</p>
+      <h2>What Will You Automate First?</h2>
+      <p class="section-sub">Autonova works across every team and every industry. Here's where early customers are starting.</p>
+
+      <div class="use-cases-grid">
+        <div class="use-case"><span class="use-case-icon">📨</span>Lead Follow-Up</div>
+        <div class="use-case"><span class="use-case-icon">📋</span>Report Generation</div>
+        <div class="use-case"><span class="use-case-icon">🎫</span>Support Triage</div>
+        <div class="use-case"><span class="use-case-icon">📅</span>Meeting Scheduling</div>
+        <div class="use-case"><span class="use-case-icon">💼</span>Proposal Drafting</div>
+        <div class="use-case"><span class="use-case-icon">🔔</span>Alerting &amp; Monitoring</div>
+        <div class="use-case"><span class="use-case-icon">🧾</span>Invoice Processing</div>
+        <div class="use-case"><span class="use-case-icon">📣</span>Social Publishing</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bottom CTA -->
+  <section id="cta">
+    <div class="container">
+      <h2>Ready to Get Your Time Back?</h2>
+      <p class="section-sub">Early access members get 3 months free and a 1-on-1 onboarding call. Spots are limited.</p>
+
+      <div class="waitlist-wrap">
+        <form class="waitlist-form" id="wl-form-2">
+          <input type="email" name="email" placeholder="Enter your work email" required autocomplete="email">
+          <button type="submit">Join the Waitlist</button>
+        </form>
+        <div class="form-success" id="wl-success-2">✓ You're on the list! We'll be in touch.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <span class="footer-logo">Autonova</span>
+    <p>&copy; 2026 Autonova. All rights reserved.</p>
+    <p>Building the future of business automation.</p>
+  </footer>
+
+  <script>
+    // Waitlist form handler
+    // To activate: sign up at https://formspree.io (free), create a form, and replace YOUR_FORM_ID below.
+    const FORMSPREE_ID = 'YOUR_FORM_ID';
+
+    function setupWaitlist(formId, successId) {
+      const form = document.getElementById(formId);
+      const success = document.getElementById(successId);
+      if (!form) return;
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const email = form.querySelector('input[type="email"]').value.trim();
+        const btn = form.querySelector('button');
+        const original = btn.textContent;
+
+        btn.textContent = 'Joining...';
+        btn.disabled = true;
+
+        try {
+          if (FORMSPREE_ID !== 'YOUR_FORM_ID') {
+            const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+              body: JSON.stringify({ email }),
+            });
+            if (!res.ok) throw new Error('submission failed');
+          }
+          // Show success
+          form.style.display = 'none';
+          success.style.display = 'flex';
+        } catch {
+          btn.textContent = original;
+          btn.disabled = false;
+          alert('Something went wrong. Please try again.');
+        }
+      });
+    }
+
+    setupWaitlist('wl-form-1', 'wl-success-1');
+    setupWaitlist('wl-form-2', 'wl-success-2');
+  </script>
+
+</body>
+</html>
